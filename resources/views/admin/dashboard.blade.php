@@ -1,0 +1,1 @@
+<h1>Dashboard Admin</h1><p>Total User: {{ $totalUsers }}</p><p>Total Booking: {{ $totalBookings }}</p><p>Total Services: {{ $totalServices }}</p>

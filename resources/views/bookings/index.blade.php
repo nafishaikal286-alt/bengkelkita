@@ -1,0 +1,1 @@
+<h2>Daftar Booking</h2>@foreach($bookings as $b)<p>{{ $b->date }} - {{ $b->vehicle_plate }}</p>@endforeach

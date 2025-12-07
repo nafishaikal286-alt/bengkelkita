@@ -1,0 +1,1 @@
+<h2>Daftar Layanan</h2>@foreach($services as $s)<p>{{ $s->name }} - Rp{{ $s->price }}</p>@endforeach
