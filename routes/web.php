@@ -27,5 +27,6 @@ Route::get('/admin', [AdminController::class, 'dashboard']);
 // Resource Routes untuk Services (CRUD)
 Route::resource('services', ServiceController::class);
 
-// Resource Routes untuk Bookings (CRUD)
-Route::resource('bookings', BookingController::class);g
+Route::get('/login', function () {
+    return view('bengkelkita.login');
+});
