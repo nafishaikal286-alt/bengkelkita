@@ -30,3 +30,7 @@ Route::resource('services', ServiceController::class);
 Route::get('/login', function () {
     return view('bengkelkita.login');
 });
+
+Route::get('/', fn () => view('bengkelkita.splash'));
+
+Route::get('/register', fn () => view('bengkelkita.register'));
