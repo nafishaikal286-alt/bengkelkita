@@ -105,10 +105,7 @@ body {
 <!-- ===== ISI ===== -->
 <div class="wrapper">
 
-    <!-- FOTO ATAS -->
-    <div class="hero">
-        <img src="{{ asset('assets/img/banner-motor.jpg') }}">
-    </div>
+
 
 
     <!-- TEKS -->
@@ -119,7 +116,7 @@ body {
     </div>
 
     <!-- Content -->
->>>>>>> 8e7970bff053d32113ae7899958f1ea8d99e3f47
+
     <div class="content">
         <p>
             BengkelKita memudahkan Anda melakukan booking service motor secara online.
@@ -140,7 +137,7 @@ body {
                 <div class="card-body">
                     <h4>10 Nominasi bengkel terbaik di Indonesia</h4>
                     <button>Learn More</button>
->>>>>>> 8e7970bff053d32113ae7899958f1ea8d99e3f47
+
                 </div>
             </div>
 
@@ -155,6 +152,9 @@ body {
                 <div class="card-body">
                     <h4>Layanan gratis service akhir tahun</h4>
                     <button>Learn More</button>
+
+
+                
                 </div>
             </div>
         </div>
