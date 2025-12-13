@@ -29,4 +29,14 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+    // ... (bagian atas)
+
+    protected $routeMiddleware = [
+    // ... middleware bawaan Laravel
+    'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+    
+    // [TAMBAHKAN INI]
+    'is_admin' => \App\Http\Middleware\IsAdmin::class, 
+    ];
 }

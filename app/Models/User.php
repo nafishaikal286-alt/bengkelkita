@@ -1,4 +1,42 @@
 <?php
-namespace App\\Models;
-use Illuminate\\Foundation\\Auth\\User as Authenticatable;
-class User extends Authenticatable {}
+namespace App\Models;
+
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * Tambahkan kolom 'phone' dan 'role' ke fillable
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'phone', // <--- Disarankan ditambahkan
+        'role',  // <--- Kritis untuk middleware IsAdmin
+        'password',
+    ];
+
+    /**
+     * Kolom lainnya (hidden, casts) disesuaikan
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+}
