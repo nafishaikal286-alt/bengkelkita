@@ -10,113 +10,140 @@
         background: #f4f4f4;
     }
 
-    .container {
-        max-width: 430px;
-        margin: auto;
-        background: #fff;
-        padding-bottom: 90px;
-    }
-
-    .search-box {
-        padding: 15px;
+    /* ===== NAVBAR ===== */
+    .navbar {
         background: #8f96a3;
-    }
-
-    .search {
-        background: #fff;
-        border-radius: 10px;
-        padding: 10px;
+        padding: 15px 40px;
         display: flex;
         justify-content: space-between;
-        font-size: 13px;
+        align-items: center;
+        color: #fff;
     }
 
+    .navbar .logo {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .navbar ul li a:hover {
+        text-decoration: underline;
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .container {
+        max-width: 1200px;
+        margin: 30px auto;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    /* ===== SEARCH BAR ===== */
+    .search-box {
+        padding: 20px 30px;
+        background: #f0f0f0;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+    }
+
+    /* ===== BANNER ===== */
     .banner img {
         width: 100%;
-        height: auto;
+        height: 320px;
+        object-fit: cover;
     }
 
+    /* ===== CONTENT ===== */
     .content {
-        padding: 15px;
+        padding: 30px;
     }
 
     .content p {
-        font-size: 14px;
-        line-height: 1.6;
+        font-size: 15px;
+        line-height: 1.8;
         color: #333;
+        max-width: 800px;
     }
 
+    /* ===== CARDS ===== */
     .cards {
-        display: flex;
-        gap: 10px;
-        margin-top: 15px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 30px;
     }
 
     .card {
-        width: 50%;
         background: #f5f5f5;
         border-radius: 10px;
         overflow: hidden;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
     }
 
     .card img {
         width: 100%;
-        height: 110px;
+        height: 180px;
         object-fit: cover;
     }
 
     .card-body {
-        padding: 10px;
+        padding: 15px;
     }
 
     .card-body h4 {
-        font-size: 13px;
-        margin-bottom: 10px;
+        font-size: 15px;
+        margin-bottom: 12px;
     }
 
     .card-body button {
-        padding: 8px 12px;
+        padding: 8px 18px;
         background: #9fa4aa;
         border: none;
-        border-radius: 15px;
+        border-radius: 20px;
         color: #fff;
-        font-size: 12px;
-    }
-
-    /* Bottom Nav */
-    .bottom-nav {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        max-width: 430px;
-        background: #9fa4aa;
-        display: flex;
-        justify-content: space-around;
-        padding: 10px 0;
-        color: #fff;
-        font-size: 12px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .bottom-nav a {
-        color: #fff;
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 12px;
+        font-size: 13px;
+        cursor: pointer;
     }
 </style>
 
+<!-- ===== NAVBAR ===== -->
+<div class="navbar">
+    <div class="logo">BengkelKita</div>
+    <ul>
+        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('booking') }}">Booking</a></li>
+        <li><a href="#">Inbox</a></li>
+        <li><a href="#">Profile</a></li>
+    </ul>
+</div>
+
+<!-- ===== CONTENT ===== -->
 <div class="container">
 
     <!-- Search -->
     <div class="search-box">
-        <div class="search">
-            <div>📍 Sleman Sembada</div>
-            <div>📅 12/07/2025</div>
-        </div>
+        <div>📍 Sleman Sembada</div>
+        <div>📅 12/07/2025</div>
     </div>
 
     <!-- Banner -->
@@ -124,20 +151,20 @@
         <img src="{{ asset('assets/img/banner-motor.jpg') }}" alt="Banner">
     </div>
 
-    <!-- Content -->
+    <!-- Text & Cards -->
     <div class="content">
         <p>
-            Merawat motor kini jadi lebih mudah bersama BengkelKita!
-            Tinggal booking, pilih jadwal, datang — motor langsung ditangani
-            mekanik profesional tanpa harus menunggu lama.
-            Praktis, cepat, terpercaya!
+            Merawat motor kini jadi lebih mudah bersama BengkelKita.
+            Booking layanan secara online, pilih jadwal sesuai kebutuhan,
+            dan motor Anda langsung ditangani oleh mekanik profesional
+            tanpa antre lama. Praktis, cepat, dan terpercaya.
         </p>
 
         <div class="cards">
             <div class="card">
                 <img src="{{ asset('assets/img/bengkel1.jpg') }}" alt="">
                 <div class="card-body">
-                    <h4>10 Nominasi bengkel terbaik di Indonesia</h4>
+                    <h4>10 Nominasi Bengkel Terbaik di Indonesia</h4>
                     <button>Learn More</button>
                 </div>
             </div>
@@ -145,36 +172,13 @@
             <div class="card">
                 <img src="{{ asset('assets/img/bengkel2.jpg') }}" alt="">
                 <div class="card-body">
-                    <h4>Layanan gratis service akhir tahun</h4>
+                    <h4>Layanan Gratis Service Akhir Tahun</h4>
                     <button>Learn More</button>
                 </div>
             </div>
         </div>
     </div>
 
-</div>
-
-<!-- Bottom Navigation -->
-<div class="bottom-nav">
-    <a href="{{ route('home') }}">
-        🏠
-        <span>Home</span>
-    </a>
-
-    <a href="{{ route('booking') }}">
-        📅
-        <span>Booking</span>
-    </a>
-
-    <a href="#">
-        📩
-        <span>Inbox</span>
-    </a>
-
-    <a href="#">
-        👤
-        <span>Profile</span>
-    </a>
 </div>
 
 @endsection
