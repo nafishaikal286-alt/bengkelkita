@@ -74,3 +74,22 @@ Route::middleware(['auth', 'is_admin'])
 })->name('home');
 
 Route::get('/booking', fn() => view('booking'))->name('booking');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/booking', function () {
+        return view('booking');
+    })->name('booking');
+
+    Route::post('/booking/store', [BookingController::class, 'store'])
+        ->name('booking.store');
+
+        // INBOX
+    Route::get('/inbox', [InboxController::class, 'index'])
+        ->name('inbox');
+
+    // PROFILE
+    Route::get('/profile', [ProfileController::class, 'index'])
+        ->name('profile');
+});
+
+

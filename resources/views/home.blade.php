@@ -4,176 +4,135 @@
 @section('content')
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f4f4f4;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
 
-    /* ===== NAVBAR ===== */
-    .navbar {
-        background: #8f96a3;
-        padding: 15px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: #fff;
-    }
+/* ===== NAVBAR ATAS ===== */
+.navbar-top {
+    background: #8f96a3;
+    color: #fff;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    .navbar .logo {
-        font-size: 20px;
-        font-weight: bold;
-    }
+.navbar-top h2 {
+    margin: 0;
+}
 
-    .navbar ul {
-        list-style: none;
-        display: flex;
-        gap: 25px;
-        margin: 0;
-        padding: 0;
-    }
+.navbar-top a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+}
 
-    .navbar ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-    }
+/* ===== CONTAINER ===== */
+.wrapper {
+    max-width: 1200px;
+    margin: 30px auto;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
-    .navbar ul li a:hover {
-        text-decoration: underline;
-    }
+/* ===== FOTO ATAS ===== */
+.hero img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
 
-    /* ===== MAIN CONTAINER ===== */
-    .container {
-        max-width: 1200px;
-        margin: 30px auto;
-        background: #fff;
-        border-radius: 8px;
-        overflow: hidden;
-    }
+/* ===== CONTENT ===== */
+.content {
+    padding: 30px;
+}
 
-    /* ===== SEARCH BAR ===== */
-    .search-box {
-        padding: 20px 30px;
-        background: #f0f0f0;
-        display: flex;
-        justify-content: space-between;
-        font-size: 14px;
-    }
+.content p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
 
-    /* ===== BANNER ===== */
-    .banner img {
-        width: 100%;
-        height: 320px;
-        object-fit: cover;
-    }
+/* ===== 2 FOTO ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 
-    /* ===== CONTENT ===== */
-    .content {
-        padding: 30px;
-    }
+.card {
+    background: #f2f2f2;
+    border-radius: 10px;
+    overflow: hidden;
+}
 
-    .content p {
-        font-size: 15px;
-        line-height: 1.8;
-        color: #333;
-        max-width: 800px;
-    }
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
 
-    /* ===== CARDS ===== */
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        margin-top: 30px;
-    }
+.card div {
+    padding: 15px;
+}
 
-    .card {
-        background: #f5f5f5;
-        border-radius: 10px;
-        overflow: hidden;
-        transition: 0.3s;
-    }
-
-    .card:hover {
-        transform: translateY(-4px);
-    }
-
-    .card img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-    }
-
-    .card-body {
-        padding: 15px;
-    }
-
-    .card-body h4 {
-        font-size: 15px;
-        margin-bottom: 12px;
-    }
-
-    .card-body button {
-        padding: 8px 18px;
-        background: #9fa4aa;
-        border: none;
-        border-radius: 20px;
-        color: #fff;
-        font-size: 13px;
-        cursor: pointer;
-    }
+.card button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background: #8f96a3;
+    color: #fff;
+    cursor: pointer;
+}
 </style>
 
 <!-- ===== NAVBAR ===== -->
-<div class="navbar">
-    <div class="logo">BengkelKita</div>
-    <ul>
-        <li><a href="{{ route('home') }}">Home</a></li>
-        <li><a href="{{ route('booking') }}">Booking</a></li>
-        <li><a href="#">Inbox</a></li>
-        <li><a href="#">Profile</a></li>
-    </ul>
+<div class="navbar-top">
+    <h2>BengkelKita</h2>
+    <div>
+        <a href="{{ route('home') }}">Home</a>
+        <a href="{{ route('booking') }}">Booking</a>
+        <a href="{{ route('inbox') }}">Inbox</a>
+        <a href="{{ route('profile') }}">Profile</a>
+    </div>
 </div>
 
-<!-- ===== CONTENT ===== -->
-<div class="container">
+<!-- ===== ISI ===== -->
+<div class="wrapper">
 
-    <!-- Search -->
-    <div class="search-box">
-        <div>📍 Sleman Sembada</div>
-        <div>📅 12/07/2025</div>
+    <!-- FOTO ATAS -->
+    <div class="hero">
+        <img src="{{ asset('assets/img/banner-motor.jpg') }}">
     </div>
 
-    <!-- Banner -->
-    <div class="banner">
-        <img src="{{ asset('assets/img/banner-motor.jpg') }}" alt="Banner">
-    </div>
-
-    <!-- Text & Cards -->
+    <!-- TEKS -->
     <div class="content">
         <p>
-            Merawat motor kini jadi lebih mudah bersama BengkelKita.
-            Booking layanan secara online, pilih jadwal sesuai kebutuhan,
-            dan motor Anda langsung ditangani oleh mekanik profesional
-            tanpa antre lama. Praktis, cepat, dan terpercaya.
+            BengkelKita memudahkan Anda melakukan booking service motor secara online.
+            Pilih jadwal, datang ke bengkel, dan motor langsung ditangani mekanik
+            profesional tanpa antre lama.
         </p>
 
-        <div class="cards">
+        <!-- 2 FOTO -->
+        <div class="gallery">
             <div class="card">
-                <img src="{{ asset('assets/img/bengkel1.jpg') }}" alt="">
-                <div class="card-body">
-                    <h4>10 Nominasi Bengkel Terbaik di Indonesia</h4>
-                    <button>Learn More</button>
+                <img src="{{ asset('assets/img/bengkel1.jpg') }}">
+                <div>
+                    <h4>Bengkel Terbaik</h4>
+                    <button>Detail</button>
                 </div>
             </div>
 
             <div class="card">
-                <img src="{{ asset('assets/img/bengkel2.jpg') }}" alt="">
-                <div class="card-body">
-                    <h4>Layanan Gratis Service Akhir Tahun</h4>
-                    <button>Learn More</button>
+                <img src="{{ asset('assets/img/bengkel2.jpg') }}">
+                <div>
+                    <h4>Promo Service</h4>
+                    <button>Detail</button>
                 </div>
             </div>
         </div>
