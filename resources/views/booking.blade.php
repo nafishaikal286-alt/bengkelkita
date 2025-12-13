@@ -18,7 +18,7 @@
         box-shadow:0 6px 10px rgba(0,0,0,0.15);
     ">
 
-        <img src="{{ asset('assets/img/logo-bengkelkita.png') }}"
+        <img src="{{ asset('assets/img/bengkelkita-logo.jpeg') }}"
              style="width:120px; display:block; margin:0 auto 15px; opacity:0.4;">
 
         <label>Vehicle</label>

@@ -37,7 +37,6 @@ Route::get('/register/profil', function () {
     return view('auth.register-profil');
 })->name('register.profil');
 
-
 Route::post('/register', [AuthController::class, 'register']);
 
 // Logout
