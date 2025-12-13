@@ -28,4 +28,4 @@ Route::get('/admin', [AdminController::class, 'dashboard']);
 Route::resource('services', ServiceController::class);
 
 // Resource Routes untuk Bookings (CRUD)
-Route::resource('bookings', BookingController::class);
+Route::resource('bookings', BookingController::class);g
