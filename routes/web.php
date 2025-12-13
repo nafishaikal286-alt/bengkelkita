@@ -31,10 +31,6 @@ Route::get('/login', function () {
     return view('bengkelkita.login');
 });
 
-Route::middleware(['auth','is_admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index']);
-});
-
 Route::get('/', fn () => view('bengkelkita.splash'));
 
 Route::get('/register', fn () => view('bengkelkita.register'));
