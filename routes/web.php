@@ -28,10 +28,49 @@ Route::get('/admin', [AdminController::class, 'dashboard']);
 Route::resource('services', ServiceController::class);
 
 Route::get('/login', function () {
-    return view('bengkelkita.login');
+    return view('auth.login');
+})->name('login');
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/register/profil', function () {
+    return view('auth.register-profil');
+})->name('register.profil');
+
+
+Route::post('/register', [AuthController::class, 'register']);
+
+// Logout
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth'])->group(function () {
+
+    // Bookings
+    Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+    Route::get('/bookings/create', [BookingController::class, 'create'])->name('bookings.create');
+    Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
-Route::get('/', fn () => view('bengkelkita.splash'));
+Route::middleware(['auth', 'is_admin'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
 
-Route::get('/register', fn () => view('bengkelkita.register'));
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])
+            ->name('dashboard');
 
+        // nanti bisa ditambah:
+        // Route::resource('/services', AdminServiceController::class);
+        // Route::resource('/bookings', AdminBookingController::class);
+    });
+
+    Route::get('/home', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/booking', fn() => view('booking'))->name('booking');
