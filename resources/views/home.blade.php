@@ -121,7 +121,7 @@
 
     <!-- Banner -->
     <div class="banner">
-        <img src="{{ asset('assets/img/banner-motor.jpg') }}" alt="Banner">
+        <img src="{{ asset('assets/img/banner-motor.jpeg') }}" alt="Banner">
     </div>
 
     <!-- Content -->
@@ -135,7 +135,7 @@
 
         <div class="cards">
             <div class="card">
-                <img src="{{ asset('assets/img/bengkel1.jpg') }}" alt="">
+                <img src="{{ asset('assets/img/bengkel1.jpeg') }}" alt="">
                 <div class="card-body">
                     <h4>10 Nominasi bengkel terbaik di Indonesia</h4>
                     <button>Learn More</button>
@@ -143,7 +143,7 @@
             </div>
 
             <div class="card">
-                <img src="{{ asset('assets/img/bengkel2.jpg') }}" alt="">
+                <img src="{{ asset('assets/img/bengkel2.jpeg') }}" alt="">
                 <div class="card-body">
                     <h4>Layanan gratis service akhir tahun</h4>
                     <button>Learn More</button>

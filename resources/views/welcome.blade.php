@@ -91,7 +91,7 @@
     <div class="welcome-container">
         <div class="logo">
             {{-- GANTI path logo sesuai folder kamu --}}
-            <img src="{{ asset('assets/img/bengkelkita-logo.') }}" alt="BengkelKita">
+            <img src="{{ asset('assets/img/bengkelkita-logo.jpeg') }}" alt="BengkelKita">
         </div>
         
          
