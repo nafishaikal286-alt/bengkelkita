@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #dcdcdc;
+}
+
+/* Container utama */
+.app-container {
+    width: 100%;
+    max-width: 430px;
+    margin: auto;
+    background: #fff;
+    min-height: 100vh;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .app-container {
+        max-width: 1000px;
+        border-radius: 12px;
+        margin-top: 20px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    }
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
