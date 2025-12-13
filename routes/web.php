@@ -34,3 +34,4 @@ Route::get('/login', function () {
 Route::get('/', fn () => view('bengkelkita.splash'));
 
 Route::get('/register', fn () => view('bengkelkita.register'));
+
