@@ -29,3 +29,7 @@ Route::resource('services', ServiceController::class);
 
 // Resource Routes untuk Bookings (CRUD)
 Route::resource('bookings', BookingController::class);
+
+Route::get('/login', function () {
+    return view('bengkelkita.login');
+});
