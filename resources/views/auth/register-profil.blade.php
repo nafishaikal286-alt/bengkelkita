@@ -22,19 +22,19 @@
         /* WRAPPER */
         .page-wrapper {
             position: relative;
-            max-width: 720px;   /* LEBIH LEBAR */
+            max-width: 720px;
             margin: 60px auto;
             padding: 40px 30px;
         }
 
-        /* LOGO BACKGROUND */
+        /* LOGO WATERMARK */
         .bg-logo {
             position: absolute;
             inset: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            opacity: 0.18; /* logo kelihatan */
+            opacity: 0.18;
             pointer-events: none;
             z-index: 1;
         }
@@ -43,11 +43,11 @@
             width: 420px;
         }
 
-        /* FORM GLASS */
+        /* FORM CONTAINER */
         .container {
             position: relative;
             z-index: 2;
-            background: rgba(255, 255, 255, 0.75); /* PUTIH TRANSPARAN */
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border-radius: 28px;
@@ -76,7 +76,7 @@
             font-weight: 500;
         }
 
-        input, select {
+        input {
             width: 100%;
             padding: 14px;
             border-radius: 12px;
@@ -85,19 +85,6 @@
             margin-bottom: 20px;
             font-size: 14px;
             background: rgba(255,255,255,0.9);
-        }
-
-        .phone-group {
-            display: flex;
-            gap: 14px;
-        }
-
-        .phone-group select {
-            width: 25%;
-        }
-
-        .phone-group input {
-            width: 75%;
         }
 
         button {
@@ -123,7 +110,12 @@
             text-decoration: none;
         }
 
-        /* RESPONSIVE */
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
         @media (max-width: 768px) {
             .page-wrapper {
                 margin: 20px auto;
@@ -149,30 +141,35 @@
     <div class="container">
         <div class="back" onclick="history.back()">←</div>
 
-        <h2>Kelengkapan profil</h2>
+        <h2>Kelengkapan Profil</h2>
         <p>Kami masih memerlukan beberapa rincian lagi.</p>
 
-        <form method="POST" action="#">
+        {{-- ERROR VALIDASI --}}
+        @if ($errors->any())
+            <div class="error">
+                @foreach ($errors->all() as $error)
+                    {{ $error }}<br>
+                @endforeach
+            </div>
+        @endif
+
+        <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <label>Nama Panggilan</label>
-            <input type="text" placeholder="Nama Panggilan" required>
-
-            <label>Negara / Wilayah</label>
-            <select>
-                <option>Indonesia</option>
-            </select>
+            <input type="text" name="nama_panggilan" required>
 
             <label>Tanggal Lahir</label>
-            <input type="date" required>
+            <input type="date" name="tanggal_lahir" required>
 
-            <label>Phone Number</label>
-            <div class="phone-group">
-                <select>
-                    <option>+62</option>
-                </select>
-                <input type="text" placeholder="812xxxxxxx" required>
-            </div>
+            <label>No HP</label>
+            <input type="text" name="no_hp" required>
+
+            <label>Email</label>
+            <input type="email" name="email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" required>
 
             <button type="submit">Register</button>
         </form>

@@ -3,18 +3,23 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/home', [AuthController::class, 'home'])
+    ->middleware('auth')
+    ->name('home');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Route Utama (Landing Page)
 Route::get('/', function () {
@@ -31,23 +36,24 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::get('/register/profil', function () {
     return view('auth.register-profil');
 })->name('register.profil');
 
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
 
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
 
-    // Bookings
-    Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
-    Route::get('/bookings/create', [BookingController::class, 'create'])->name('bookings.create');
-    Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+    Route::get('/booking', function () {
+    return view('booking');
+    })->name('booking');
+
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
