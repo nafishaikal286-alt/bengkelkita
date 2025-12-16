@@ -48,6 +48,8 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/booking', function () {

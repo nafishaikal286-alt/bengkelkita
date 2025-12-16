@@ -1,5 +1,10 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
 use App\Models\Booking;
-use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -7,22 +12,26 @@ class BookingController extends Controller
     {
         $request->validate([
             'vehicle' => 'required',
-            'phone' => 'required'
+            'full_name' => 'required',
+            'phone_number' => 'required',
         ]);
 
-        // Generate nomor antrian otomatis
-        $last = Booking::latest()->first();
-        $number = $last ? intval(substr($last->queue_number, 1)) + 1 : 1;
-        $queue = 'A' . str_pad($number, 3, '0', STR_PAD_LEFT);
+        // Hitung antrian hari ini
+        $count = Booking::whereDate('booking_date', Carbon::today())->count();
+        $queueNumber = 'A' . str_pad($count + 1, 3, '0', STR_PAD_LEFT);
 
         Booking::create([
-            'user_id' => Auth::id(),
             'vehicle' => $request->vehicle,
-            'phone' => $request->phone,
-            'queue_number' => $queue
+            'full_name' => $request->full_name,
+            'phone_number' => $request->phone_number,
+            'queue_number' => $queueNumber,
+            'booking_date' => Carbon::today(),
+            'status' => 'pending',
         ]);
 
-        return redirect()->route('booking')
-            ->with('success', 'Booking berhasil! Nomor Antrian: ' . $queue);
+        return redirect()->back()->with([
+    'success' => true,
+    'queue' => $queueNumber
+]);
     }
 }

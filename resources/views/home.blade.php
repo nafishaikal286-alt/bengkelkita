@@ -166,7 +166,7 @@
 
         <div class="gallery">
             <div class="card">
-                <img src="{{ asset('assets/img/bengkel1.jpg') }}" alt="Bengkel Terbaik">
+                <img src="{{ asset('assets/img/bengkel1.jpeg') }}" alt="Bengkel Terbaik">
                 <div>
                     <h4>Bengkel Terbaik</h4>
                     <p>10 nominasi bengkel terbaik di Indonesia.</p>
@@ -175,7 +175,7 @@
             </div>
 
             <div class="card">
-                <img src="{{ asset('assets/img/bengkel2.jpg') }}" alt="Promo Service">
+                <img src="{{ asset('assets/img/bengkel2.jpeg') }}" alt="Promo Service">
                 <div>
                     <h4>Promo Service</h4>
                     <p>Gratis layanan service akhir tahun.</p>
