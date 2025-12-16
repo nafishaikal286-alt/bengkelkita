@@ -8,25 +8,155 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-        body{background:#fff;display:flex;justify-content:center;align-items:center;height:100vh;}
-        .container{max-width:400px;width:90%;padding:30px;text-align:center;}
-        .logo img{width:120px;margin-bottom:30px;}
-        h2{font-size:24px;font-weight:700;margin-bottom:8px;}
-        p{font-size:14px;color:#555;margin-bottom:25px;}
-        input{width:100%;padding:12px 15px;margin-bottom:15px;border-radius:10px;border:1px solid #ddd;font-size:14px;}
-        .password-container{position:relative;}
-        .toggle-pass{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:12px;color:#888;}
-        .checkbox-container{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;font-size:13px;color:#555;}
-        button{width:100%;padding:14px;background:#9fa4aa;border:none;border-radius:25px;color:#fff;font-size:16px;cursor:pointer;margin-bottom:20px;}
-        .error{color:red;font-size:13px;margin-bottom:10px;}
-        .or-line{display:flex;align-items:center;margin:15px 0;color:#888;font-size:13px;}
-        .or-line::before,.or-line::after{content:'';flex:1;height:1px;background:#ddd;}
-        .or-line span{margin:0 10px;}
-        .social-btn{display:flex;flex-direction:column;gap:10px;}
-        .social-btn button{padding:12px;border-radius:10px;border:1px solid #ddd;background:#fff;font-size:14px;cursor:pointer;}
-        .register{font-size:14px;margin-top:15px;}
-    </style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-height:100vh;
+    padding-top:40px;
+}
+
+.container{
+    max-width:400px;
+    width:90%;
+    padding:30px;
+    text-align:center;
+}
+
+.logo img{
+    max-width:140px;
+    width:100%;
+    height:auto;
+    margin-bottom:25px;
+}
+
+h2{
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+p{
+    font-size:14px;
+    color:#555;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:12px 15px;
+    margin-bottom:15px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    font-size:14px;
+}
+
+.password-container{
+    position:relative;
+}
+
+.toggle-pass{
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    font-size:12px;
+    color:#888;
+}
+
+.checkbox-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    font-size:13px;
+    color:#555;
+}
+
+.checkbox-container a{
+    text-decoration:none;
+    color:#6a5acd;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#9fa4aa;
+    border:none;
+    border-radius:25px;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    margin-bottom:20px;
+}
+
+.error{
+    color:red;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.or-line{
+    display:flex;
+    align-items:center;
+    margin:20px 0;
+    color:#888;
+    font-size:13px;
+}
+
+.or-line::before,
+.or-line::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:#ddd;
+}
+
+.or-line span{
+    margin:0 10px;
+}
+
+.social-btn{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.social-btn button{
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    background:#fff;
+    font-size:14px;
+    cursor:pointer;
+    color:#333; /* ← PENTING: teks jadi kelihatan */
+}
+
+.social-btn button:hover{
+    background:#f5f5f5;
+}
+
+.register{
+    font-size:14px;
+    margin-top:20px;
+}
+
+.register a{
+    text-decoration:none;
+    color:#6a5acd;
+    font-weight:600;
+}
+</style>
+
 </head>
 <body>
 

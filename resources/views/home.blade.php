@@ -4,139 +4,137 @@
 @section('content')
 
 <style>
-<<<<<<< HEAD
-    body{margin:0;font-family:Arial,sans-serif;background:#f4f4f4;}
-    .container{max-width:430px;margin:auto;background:#fff;padding-bottom:90px;}
-    .search-box{padding:15px;background:#8f96a3;}
-    .search{background:#fff;border-radius:10px;padding:10px;display:flex;justify-content:space-between;font-size:13px;}
-    .banner img{width:100%;height:auto;}
-    .content{padding:15px;}
-    .content p{font-size:14px;line-height:1.6;color:#333;}
-    .cards{display:flex;gap:10px;margin-top:15px;}
-    .card{width:50%;background:#f5f5f5;border-radius:10px;overflow:hidden;}
-    .card img{width:100%;height:110px;object-fit:cover;}
-    .card-body{padding:10px;}
-    .card-body h4{font-size:13px;margin-bottom:10px;}
-    .card-body button{padding:8px 12px;background:#9fa4aa;border:none;border-radius:15px;color:#fff;font-size:12px;}
-
-    .bottom-nav{
-        position:fixed;
-        bottom:0;
-        width:100%;
-        max-width:430px;
-        background:#9fa4aa;
-        display:flex;
-        justify-content:space-around;
-        padding:10px 0;
-        color:#fff;
-        font-size:12px;
-        left:50%;
-        transform:translateX(-50%);
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
     }
-    .bottom-nav a{
-        color:#fff;
-        text-decoration:none;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        font-size:12px;
+
+    /* ===== NAVBAR ===== */
+    .navbar-top {
+        background: #8f96a3;
+        color: #fff;
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-</style>
 
-<div class="container">
+    .navbar-top h2 {
+        margin: 0;
+        font-size: 22px;
+    }
 
-    <!-- Search -->
-    <div class="search-box">
-        <div class="search">
-            <div>📍 Sleman Sembada</div>
-            <div>📅 {{ date('d/m/Y') }}</div>
-        </div>
-=======
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-}
+    .navbar-top a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 24px;
+        font-weight: 500;
+        font-size: 15px;
+    }
 
-/* ===== NAVBAR ATAS ===== */
-.navbar-top {
-    background: #8f96a3;
-    color: #fff;
-    padding: 15px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    .navbar-top a:hover {
+        text-decoration: underline;
+    }
 
-.navbar-top h2 {
-    margin: 0;
-}
+    /* ===== WRAPPER ===== */
+    .wrapper {
+        max-width: 1200px;
+        margin: 30px auto;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+    }
 
-.navbar-top a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 500;
-}
+    /* ===== BANNER ===== */
+    .banner img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+    }
 
-/* ===== CONTAINER ===== */
-.wrapper {
-    max-width: 1200px;
-    margin: 30px auto;
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-}
+    /* ===== CONTENT ===== */
+    .content {
+        padding: 30px;
+    }
 
-/* ===== FOTO ATAS ===== */
-.hero img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-}
+    .content p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: #333;
+        margin-bottom: 30px;
+    }
 
-/* ===== CONTENT ===== */
-.content {
-    padding: 30px;
-}
+    /* ===== CARD ===== */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
 
-.content p {
-    font-size: 16px;
-    line-height: 1.7;
-    margin-bottom: 30px;
-}
+    .card {
+        background: #f2f2f2;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 
-/* ===== 2 FOTO ===== */
-.gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
 
-.card {
-    background: #f2f2f2;
-    border-radius: 10px;
-    overflow: hidden;
-}
+    .card div {
+        padding: 15px;
+    }
 
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
+    .card h4 {
+        margin-bottom: 6px;
+        font-size: 16px;
+    }
 
-.card div {
-    padding: 15px;
-}
+    .card p {
+        font-size: 14px;
+        margin-bottom: 12px;
+        color: #555;
+    }
 
-.card button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 20px;
-    background: #8f96a3;
-    color: #fff;
-    cursor: pointer;
-}
+    .card button {
+        padding: 8px 18px;
+        border: none;
+        border-radius: 20px;
+        background: #8f96a3;
+        color: #fff;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .card button:hover {
+        background: #7f8693;
+    }
+
+    /* ===== BOTTOM NAV (MOBILE) ===== */
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: #9fa4aa;
+        display: flex;
+        justify-content: space-around;
+        padding: 12px 0;
+    }
+
+    .bottom-nav a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+    }
+
+    @media (min-width: 768px) {
+        .bottom-nav {
+            display: none;
+        }
+    }
 </style>
 
 <!-- ===== NAVBAR ===== -->
@@ -147,94 +145,53 @@ body {
         <a href="{{ route('booking') }}">Booking</a>
         <a href="{{ route('inbox') }}">Inbox</a>
         <a href="{{ route('profile') }}">Profile</a>
->>>>>>> 11362fe1d4edeaff364ce0e18067e678311dc49b
     </div>
 </div>
 
-<!-- ===== ISI ===== -->
+<!-- ===== CONTENT ===== -->
 <div class="wrapper">
 
-
-
-
-    <!-- TEKS -->
-
-    <!-- Banner -->
     <div class="banner">
-        <img src="{{ asset('assets/img/benner.jpeg') }}" alt="Banner">
+        <img src="{{ asset('assets/img/benner.jpeg') }}" alt="Banner BengkelKita">
     </div>
-
-    <!-- Content -->
 
     <div class="content">
         <p>
-<<<<<<< HEAD
-            Selamat datang <b>{{ auth()->user()->name }}</b> 👋 <br>
-            Merawat motor kini jadi lebih mudah bersama BengkelKita!
-            Tinggal booking, pilih jadwal, datang — motor langsung ditangani
-            mekanik profesional tanpa harus menunggu lama.
-            Praktis, cepat, terpercaya!
-=======
-            BengkelKita memudahkan Anda melakukan booking service motor secara online.
-            Pilih jadwal, datang ke bengkel, dan motor langsung ditangani mekanik
-            profesional tanpa antre lama.
->>>>>>> 11362fe1d4edeaff364ce0e18067e678311dc49b
-        </p>
+    Selamat datang
+    <b>{{ auth()->check() ? auth()->user()->name : 'Pengguna' }}</b>.<br>
+    Merawat motor kini menjadi lebih mudah bersama BengkelKita.
+    Booking service tanpa antre, cepat, dan terpercaya.
+</p>
 
-        <!-- 2 FOTO -->
+
         <div class="gallery">
             <div class="card">
-
-                <img src="{{ asset('assets/img/bengkel1.jpg') }}">
+                <img src="{{ asset('assets/img/bengkel1.jpg') }}" alt="Bengkel Terbaik">
                 <div>
                     <h4>Bengkel Terbaik</h4>
-                    <h4>10 Nominasi bengkel terbaik di Indonesia</h4>
+                    <p>10 nominasi bengkel terbaik di Indonesia.</p>
                     <button>Learn More</button>
-
                 </div>
             </div>
 
             <div class="card">
-
-                <img src="{{ asset('assets/img/bengkel2.jpg') }}">
+                <img src="{{ asset('assets/img/bengkel2.jpg') }}" alt="Promo Service">
                 <div>
                     <h4>Promo Service</h4>
-                    <h4>Layanan gratis service akhir tahun</h4>
+                    <p>Gratis layanan service akhir tahun.</p>
                     <button>Learn More</button>
-
-
-                
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
-<<<<<<< HEAD
-<!-- Bottom Navigation -->
+<!-- ===== MOBILE NAV ===== -->
 <div class="bottom-nav">
-    <a href="{{ route('home') }}">
-        🏠
-        <span>Home</span>
-    </a>
-
-    <a href="{{ route('booking') ?? '#' }}">
-        📅
-        <span>Booking</span>
-    </a>
-
-    <a href="#">
-        📩
-        <span>Inbox</span>
-    </a>
-
-    <a href="#">
-        👤
-        <span>Profile</span>
-    </a>
+    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ route('booking') }}">Booking</a>
+    <a href="{{ route('inbox') }}">Inbox</a>
+    <a href="{{ route('profile') }}">Profile</a>
 </div>
 
-=======
->>>>>>> 11362fe1d4edeaff364ce0e18067e678311dc49b
 @endsection
