@@ -5,7 +5,7 @@
     <title>BengkelKita</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{-- Font --}}
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -18,7 +18,7 @@
 
         body {
             height: 100vh;
-            background-color: #9b9b9b; /* abu-abu seperti gambar */
+            background-color: #9b9b9b;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,9 +31,14 @@
             padding: 30px 20px;
         }
 
+        /* LOGO */
         .logo img {
             width: 230px;
             margin-bottom: 50px;
+            background: transparent;   /* penting */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn-register {
@@ -88,25 +93,24 @@
 </head>
 <body>
 
-    <div class="welcome-container">
-        <div class="logo">
-            {{-- GANTI path logo sesuai folder kamu --}}
-            <img src="{{ asset('assets/img/bengkelkita-logo.jpeg') }}" alt="BengkelKita">
-        </div>
-        
-         
-        <a href="{{ route('register.profil') }}">
-            <button class="btn-register">REGISTER</button>
-        </a>
-
-        <div class="or-line">
-            <span>OR</span>
-        </div>
-
-        <a href="{{ route('home') }}" class="skip">
-            Skip &amp; Explore
-        </a>
+<div class="welcome-container">
+    <div class="logo">
+        <!-- LOGO TRANSPARAN -->
+        <img src="{{ asset('assets/img/logo.png') }}" alt="BengkelKita">
     </div>
+
+    <a href="{{ route('register.profil') }}">
+        <button class="btn-register">REGISTER</button>
+    </a>
+
+    <div class="or-line">
+        <span>OR</span>
+    </div>
+
+    <a href="{{ route('home') }}" class="skip">
+        Skip &amp; Explore
+    </a>
+</div>
 
 </body>
 </html>

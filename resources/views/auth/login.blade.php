@@ -35,7 +35,7 @@
 
 <div class="container">
     <div class="logo">
-        <img src="{{ asset('assets/img/bengkelkita-logo.jpeg') }}" alt="BengkelKita">
+        <img src="{{ asset('assets/img/logo.png') }}" alt="BengkelKita">
     </div>
 
     <h2>Sign in to your Account</h2>
