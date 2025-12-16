@@ -11,4 +11,3 @@ class InboxController extends Controller
         return view('inbox');
     }
 }
-

@@ -90,9 +90,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/booking/store', [BookingController::class, 'store'])
         ->name('booking.store');
 
-        // INBOX
-    Route::get('/inbox', [InboxController::class, 'index'])
-        ->name('inbox');
+      Route::get('/inbox', function () {
+    return view('inbox');
+})->name('inbox');
+
 
     // PROFILE
     Route::get('/profile', [ProfileController::class, 'index'])
