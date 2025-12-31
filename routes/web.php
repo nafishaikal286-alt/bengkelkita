@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\ProfileController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -57,10 +57,11 @@ Route::middleware(['auth'])->group(function () {
     })->name('booking');
 
 
-    // Profile
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+
+Route::get('/profile', [ProfileController::class, 'index']);
+
+
 });
 
 Route::middleware(['auth', 'is_admin'])
@@ -96,6 +97,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     // PROFILE
+    
     Route::get('/profile', [ProfileController::class, 'index'])
         ->name('profile');
 });

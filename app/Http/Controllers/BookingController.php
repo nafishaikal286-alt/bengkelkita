@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Booking;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\Booking;
 
 class BookingController extends Controller
 {
@@ -16,22 +17,34 @@ class BookingController extends Controller
             'phone_number' => 'required',
         ]);
 
-        // Hitung antrian hari ini
-        $count = Booking::whereDate('booking_date', Carbon::today())->count();
-        $queueNumber = 'A' . str_pad($count + 1, 3, '0', STR_PAD_LEFT);
+        DB::transaction(function () use ($request, &$queueNumber) {
 
-        Booking::create([
-            'vehicle' => $request->vehicle,
-            'full_name' => $request->full_name,
-            'phone_number' => $request->phone_number,
-            'queue_number' => $queueNumber,
-            'booking_date' => Carbon::today(),
-            'status' => 'pending',
-        ]);
+            $lastQueue = Booking::whereDate('booking_date', Carbon::today())
+                ->lockForUpdate()
+                ->max('queue_number');
+
+            if ($lastQueue) {
+                $number = (int) substr($lastQueue, 1);
+                $nextNumber = $number + 1;
+            } else {
+                $nextNumber = 1;
+            }
+
+            $queueNumber = 'A' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
+
+            Booking::create([
+                'vehicle' => $request->vehicle,
+                'full_name' => $request->full_name,
+                'phone_number' => $request->phone_number,
+                'queue_number' => $queueNumber,
+                'booking_date' => Carbon::today(),
+                'status' => 'pending',
+            ]);
+        });
 
         return redirect()->back()->with([
-    'success' => true,
-    'queue' => $queueNumber
-]);
+            'success' => true,
+            'queue' => $queueNumber
+        ]);
     }
 }

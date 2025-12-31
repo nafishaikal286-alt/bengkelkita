@@ -2,28 +2,31 @@
 @section('title','Profile')
 
 @section('content')
-<div style="max-width:600px;margin:40px auto;background:#fff;padding:25px;border-radius:10px;">
 
-    <h2>Profile Saya</h2>
+<div style="max-width:600px;margin:40px auto;background:#fff;padding:25px;border-radius:12px">
 
-    <label>Nama</label>
-    <input type="text" value="{{ auth()->user()->name }}" disabled
-           style="width:100%;padding:12px;margin:8px 0 15px;border-radius:10px;border:none;">
+    <h2 style="text-align:center;">Profil Saya</h2>
 
-    <label>Email</label>
-    <input type="text" value="{{ auth()->user()->email }}" disabled
-           style="width:100%;padding:12px;margin:8px 0 15px;border-radius:10px;border:none;">
+    <div style="margin-top:20px;">
+        <p><strong>Nama:</strong></p>
+        <div style="padding:10px;background:#f1f1f1;border-radius:8px;">
+            {{ $user->name }}
+        </div>
 
-    <a href="{{ route('logout') }}"
-       onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-       style="display:inline-block;background:#8f96a3;color:#fff;
-       padding:10px 20px;border-radius:20px;text-decoration:none;">
-        Logout
-    </a>
+        <p style="margin-top:15px;"><strong>Email:</strong></p>
+        <div style="padding:10px;background:#f1f1f1;border-radius:8px;">
+            {{ $user->email }}
+        </div>
+    </div>
 
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+    <form action="{{ route('logout') }}" method="POST" style="margin-top:25px;">
         @csrf
+        <button type="submit"
+            style="width:100%;padding:12px;border:none;border-radius:20px;background:#6b7280;color:#fff;">
+            Logout
+        </button>
     </form>
 
 </div>
+
 @endsection
