@@ -12,39 +12,52 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'vehicle' => 'required',
-            'full_name' => 'required',
+            'vehicle'      => 'required',
+            'full_name'    => 'required',
             'phone_number' => 'required',
         ]);
 
-        DB::transaction(function () use ($request, &$queueNumber) {
+        $queueNumber = null;
 
-            $lastQueue = Booking::whereDate('booking_date', Carbon::today())
-                ->lockForUpdate()
-                ->max('queue_number');
+        try {
+            DB::transaction(function () use ($request, &$queueNumber) {
 
-            if ($lastQueue) {
-                $number = (int) substr($lastQueue, 1);
-                $nextNumber = $number + 1;
-            } else {
-                $nextNumber = 1;
-            }
+                $today = Carbon::today();
 
-            $queueNumber = 'A' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
+                // Ambil antrian terakhir hari ini
+                $lastBooking = Booking::whereDate('booking_date', $today)
+                    ->lockForUpdate()
+                    ->orderBy('id', 'desc')
+                    ->first();
 
-            Booking::create([
-                'vehicle' => $request->vehicle,
-                'full_name' => $request->full_name,
-                'phone_number' => $request->phone_number,
-                'queue_number' => $queueNumber,
-                'booking_date' => Carbon::today(),
-                'status' => 'pending',
+                if ($lastBooking) {
+                    $lastNumber = (int) substr($lastBooking->queue_number, 1);
+                    $nextNumber = $lastNumber + 1;
+                } else {
+                    $nextNumber = 1;
+                }
+
+                $queueNumber = 'A' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
+
+                Booking::create([
+                    'vehicle'      => $request->vehicle,
+                    'full_name'    => $request->full_name,
+                    'phone_number' => $request->phone_number,
+                    'queue_number' => $queueNumber,
+                    'booking_date' => $today,
+                    'status'       => 'pending',
+                ]);
+            });
+
+            return redirect()->back()->with([
+                'success' => true,
+                'queue'   => $queueNumber
             ]);
-        });
 
-        return redirect()->back()->with([
-            'success' => true,
-            'queue' => $queueNumber
-        ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors([
+                'error' => 'Gagal membuat antrian: ' . $e->getMessage()
+            ]);
+        }
     }
 }
